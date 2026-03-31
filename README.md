@@ -1,6 +1,6 @@
 # 🌤️ WeatherBot - AI-Powered Weather Monitoring System
 
-A full-stack AI weather bot featuring intelligent weather monitoring, automated temperature alerts, reminders, and beautiful dark-themed email notifications.
+A full-stack AI weather bot featuring intelligent weather monitoring, automated temperature alerts and reminders.
 
 ## ✨ Features
 
