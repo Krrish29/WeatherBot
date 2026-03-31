@@ -1,0 +1,13 @@
+{
+  "name": "agentic-ai-full-stack",
+  "version": "1.0.0",
+  "description": "Weather AI Bot - Full Stack Application",
+  "scripts": {
+    "start": "npm run frontend",
+    "dev": "npm run frontend",
+    "backend": "cd . && mvnw.cmd spring-boot:run",
+    "frontend": "cd frontend && npm run dev",
+    "backend:build": "mvnw.cmd clean compile",
+    "frontend:install": "cd frontend && npm install"
+  }
+}
