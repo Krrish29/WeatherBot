@@ -1,89 +1,114 @@
-# 🌦️ WeatherBot - AI Weather Assistant
+# 🌤️ WeatherBot - AI-Powered Weather Monitoring System
 
-> An intelligent weather bot with email notifications, reminders, and temperature alerts powered by AI
-
-**🌐 [Live Demo](https://krrish29.github.io/WeatherBot)** - Click to try it out!
+A full-stack AI weather bot featuring intelligent weather monitoring, automated temperature alerts and reminders.
 
 ## ✨ Features
 
-- 🤖 **AI-Powered Chat** - Intelligent conversations using Groq Llama 3.1 8B
-- 🌍 **Weather Queries** - Get real-time weather for any city
-- 📧 **Email Notifications** - Receive weather updates & reminders via email
-- 🔔 **Smart Reminders** - Set reminders with automatic email notifications
-- 🌡️ **Temperature Alerts** - Monitor temperature thresholds and get alerts
-- 🎨 **Dark Theme UI** - Beautiful GitHub-style dark interface
-- 📱 **Responsive Design** - Works on desktop and mobile
+✅ **AI Assistant** - Chat with Groq Llama 3.1 AI for weather queries
+✅ **Weather Monitoring** - Real-time temperature tracking via OpenWeatherMap
+✅ **Temperature Alerts** - Get notified when temperature exceeds your threshold
+✅ **Reminders** - Set custom reminders with scheduled email notifications
+✅ **Email Notifications** - Beautiful dark-themed emails (GitHub style)
+✅ **Configurable Recipients** - Change email recipients via properties
+✅ **Dark Theme UI** - Modern, user-friendly React frontend
+✅ **REST API** - Full REST API for all features
 
-## 🛠️ Tech Stack
+## 🎨 Email Themes
 
-**Frontend:**
-- React 18.2
-- Vite 5.4.21
-- Axios for API calls
-- CSS3 styling
+- 🔔 **Reminders** - Purple gradient theme
+- 🌤️ **Weather Updates** - Cyan/Blue theme
+- 🚨 **Temperature Alerts** - Red/Orange theme
+- 📧 **Generic Notifications** - Green theme
+
+## 🏗️ Tech Stack
 
 **Backend:**
 - Spring Boot 4.0.3
 - Java 17
-- Groq AI (Llama 3.1 8B)
+- LangChain4j (Groq Llama 3.1)
 - OpenWeatherMap API
-- Gmail SMTP for emails
+- Gmail SMTP
+
+**Frontend:**
+- React 18.2
+- Vite 5.4.21
+- Dark theme CSS
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 16+
 - Java 17+
+- Node.js 16+
 - Maven
-- Groq API Key
-- Gmail app password
-- OpenWeatherMap API Key
+- Gmail account with app password
 
-### Installation
+### 1. Clone & Setup
 
-1. **Clone the repository**
 ```bash
 git clone https://github.com/Krrish29/WeatherBot.git
 cd WeatherBot
 ```
 
-2. **Backend Setup**
-```bash
-# Configure application.properties
-cd src/main/resources
-# Edit application.properties with your API keys and credentials
+### 2. Configure Credentials
 
-# Start backend
-cd ../../../
+Edit `src/main/resources/application.properties`:
+
+```properties
+# Groq API Key (https://console.groq.com)
+groq.api.key=YOUR_GROQ_API_KEY
+
+# Gmail SMTP
+spring.mail.username=YOUR_EMAIL@gmail.com
+spring.mail.password=YOUR_APP_PASSWORD
+
+# Email Recipients
+email.reminder.recipient=YOUR_EMAIL@gmail.com
+email.weather-alert.recipient=YOUR_EMAIL@gmail.com
+email.temperature-alert.recipient=YOUR_EMAIL@gmail.com
+email.weather-update.recipient=YOUR_EMAIL@gmail.com
+```
+
+### 3. Start Backend
+
+```bash
 .\mvnw.cmd spring-boot:run
 ```
 
-Backend runs on: `http://localhost:9100`
+Backend runs on: **http://localhost:9100**
 
-3. **Frontend Setup**
+### 4. Start Frontend
+
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
 
-Frontend runs on: `http://localhost:3001`
+Frontend runs on: **http://localhost:5173**
 
-## 📧 Email Configuration
+## 📱 Usage
 
-Update `src/main/resources/application.properties`:
+### Chat with AI
+Ask weather questions:
+- "What's the weather in Delhi?"
+- "Is it raining in Mumbai?"
+- "Temperature in New York?"
 
-```properties
-spring.mail.username=your-email@gmail.com
-spring.mail.password=your-app-password
-groq.api.key=your-groq-api-key
-email.reminder.recipient=your-email@gmail.com
-email.weather-alert.recipient=your-email@gmail.com
-email.temperature-alert.recipient=your-email@gmail.com
-email.weather-update.recipient=your-email@gmail.com
+### Set Temperature Alerts
+```
+"Alert me if Chennai exceeds 35°C"
+"Alert me if temp drops below 10°C"
 ```
 
-## 📚 API Endpoints
+### Create Reminders
+```
+"Remind me to drink water at 10:00"
+"Set reminder for gym at 18:30"
+```
+
+Or use the UI reminder widget with time picker.
+
+## 🔧 API Endpoints
 
 ### Chat
 ```
@@ -98,117 +123,108 @@ Content-Type: application/json
 ### Add Reminder
 ```
 POST /api/reminder
+Content-Type: application/json
+
 {
-  "task": "go to gym",
-  "time": "11:05"
+  "message": "Drink water",
+  "time": "2026-03-31T10:00:00"
 }
 ```
 
-### Add Alert
+### Create Alert
 ```
 POST /api/alert
+Content-Type: application/json
+
 {
   "city": "Delhi",
-  "threshold": 35
+  "temperature": 35
 }
 ```
 
-## 🎨 Email Themes
+## 📅 Scheduled Tasks
 
-- **Reminder Emails**: Purple gradient theme
-- **Weather Emails**: Cyan gradient theme
-- **Temperature Alerts**: Red/Orange gradient theme
-- **Generic Updates**: Green gradient theme
+- **ReminderScheduler** - Checks reminders every 30 seconds
+- **AlertScheduler** - Monitors temperature alerts every 60 seconds
+- **WeatherAlertScheduler** - Global weather monitoring every 60 seconds
 
-All emails feature dark background with professional styling.
+## 🔐 Security Notes
 
-## 📁 Project Structure
+- **Never commit secrets** - Use `application.properties` with placeholders
+- **Gmail App Password** - Enable 2FA and create app-specific password
+- **API Keys** - Store in environment variables or properties file (not in git)
+
+## 📧 Environment Variables
+
+Create `.env` file (copy from `.env.example`):
+
+```bash
+GROQ_API_KEY=your_key
+GMAIL_USERNAME=your_email@gmail.com
+GMAIL_PASSWORD=your_app_password
+```
+
+## 🎯 Project Structure
 
 ```
 WeatherBot/
-├── frontend/               # React app
+├── backend/
+│   ├── src/main/java/org/example/agenticai/
+│   │   ├── config/         # AI & Mail configuration
+│   │   ├── controller/     # REST endpoints
+│   │   ├── service/        # Business logic
+│   │   ├── scheduler/      # Scheduled tasks
+│   │   ├── model/          # Data models
+│   │   ├── dto/            # Request/Response
+│   │   └── tools/          # AI tools
+│   ├── src/main/resources/
+│   │   └── application.properties
+│   └── pom.xml
+├── frontend/
 │   ├── src/
-│   │   ├── components/    # UI components
-│   │   ├── App.jsx
-│   │   └── api.js        # Backend API calls
+│   │   ├── components/     # React components
+│   │   ├── App.jsx         # Main app
+│   │   └── main.jsx        # Entry point
+│   ├── package.json
 │   └── vite.config.js
-├── src/main/java/
-│   └── org/example/agenticai/
-│       ├── controller/    # REST endpoints
-│       ├── service/      # Business logic
-│       ├── scheduler/    # Email & alert schedulers
-│       ├── config/       # Spring config
-│       └── model/        # Data models
-└── src/main/resources/
-    └── application.properties
+└── README.md
 ```
-
-## 🧠 AI Features
-
-### Natural Language Processing
-- Understands weather queries in natural language
-- Can extract city names and temperature thresholds
-- Context-aware responses with emojis
-
-### Tools
-- **Weather Tool**: Fetches real-time temperature data
-- **Reminder Tool**: Creates email-based reminders
-- **Alert Tool**: Monitors temperature thresholds
-
-## 🔔 Scheduler Details
-
-- **ReminderScheduler**: Runs every 30 seconds, sends reminder emails
-- **AlertScheduler**: Runs every 60 seconds, monitors user-defined alerts
-- **WeatherAlertScheduler**: Runs every 60 seconds, global weather monitoring
-
-## 🚀 Deployment
-
-### Frontend (GitHub Pages)
-```bash
-cd frontend
-npm run deploy
-```
-Live at: https://krrish29.github.io/WeatherBot
-
-### Backend (Cloud)
-Deploy to Heroku, AWS, Azure, or Railway for production use.
 
 ## 🐛 Troubleshooting
 
-**Emails not sending?**
-- Check Gmail credentials in application.properties
-- Verify app password is correct (not regular password)
-- Check spam folder
+**Backend won't start:**
+- Check Java 17 is installed: `java -version`
+- Verify port 9100 is not in use
+- Check API keys in `application.properties`
 
-**Weather API not working?**
-- Verify OpenWeatherMap API key
-- Check internet connection
-- Ensure API key has valid requests remaining
+**Emails not sending:**
+- Verify Gmail app password (not regular password)
+- Enable "Less secure app access" if needed
+- Check SMTP configuration
 
-**Frontend 404 error?**
-- Clear browser cache (Ctrl+Shift+Delete)
-- Wait 1-2 minutes for GitHub Pages to update
-- Hard refresh page (Ctrl+F5)
+**AI responses not working:**
+- Verify Groq API key is valid
+- Check LLM model name (default: llama-3.1-8b-instant)
+- Ensure internet connection
 
-## 📋 Future Enhancements
+## 📝 Future Enhancements
 
-- [ ] User authentication and persistence
-- [ ] Multiple user support with profiles
-- [ ] SMS notifications
-- [ ] Weather history/analytics
-- [ ] More AI models support
+- [ ] Database integration (PostgreSQL)
+- [ ] Persistent reminder/alert storage
+- [ ] Multi-user support with authentication
 - [ ] Mobile app (React Native)
-- [ ] Voice commands
-- [ ] Calendar integration
+- [ ] SMS notifications
+- [ ] Weather history & analytics
+- [ ] Integration with weather APIs (Dark Sky, etc.)
 
-## 📝 License
+## 📄 License
 
-MIT License - feel free to use for your projects!
+MIT License - Feel free to use and modify!
 
-## 👤 Author
+## 👨‍💻 Author
 
-Built by Krrish29
+Developed with ❤️ by Krrish Garg
 
 ---
 
-**Have questions?** Open an issue on [GitHub Issues](https://github.com/Krrish29/WeatherBot/issues)
+Made with ☕ and 🤖
