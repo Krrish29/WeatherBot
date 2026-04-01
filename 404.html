@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WeatherBot</title>
+    <script>
+        var pathname = window.location.pathname;
+        var pathnames = pathname.split('/');
+        var basePath = '/WeatherBot';
+        if (!pathname.startsWith(basePath)) {
+            pathnames[1] = 'WeatherBot';
+        }
+        window.location.href = basePath + '/#' + pathnames.slice(2).join('/');
+    </script>
+</head>
+<body></body>
+</html>
