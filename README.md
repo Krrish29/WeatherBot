@@ -2,25 +2,25 @@
 
 A full-stack AI weather bot featuring intelligent weather monitoring, automated temperature alerts and reminders.
 
-## ✨ Features
+## Features
 
-✅ **AI Assistant** - Chat with Groq Llama 3.1 AI for weather queries
-✅ **Weather Monitoring** - Real-time temperature tracking via OpenWeatherMap
-✅ **Temperature Alerts** - Get notified when temperature exceeds your threshold
-✅ **Reminders** - Set custom reminders with scheduled email notifications
-✅ **Email Notifications** - Beautiful dark-themed emails (GitHub style)
-✅ **Configurable Recipients** - Change email recipients via properties
-✅ **Dark Theme UI** - Modern, user-friendly React frontend
-✅ **REST API** - Full REST API for all features
+- **AI Assistant** - Chat with Groq Llama 3.1 AI for weather queries
+- **Weather Monitoring** - Real-time temperature tracking via OpenWeatherMap
+- **Temperature Alerts** - Get notified when temperature exceeds your threshold
+- **Reminders** - Set custom reminders with scheduled email notifications
+- **Email Notifications** - Beautiful dark-themed emails (GitHub style)
+- **Configurable Recipients** - Change email recipients via properties
+- **Dark Theme UI** - Modern, user-friendly React frontend
+- **REST API** - Full REST API for all features
 
-## 🎨 Email Themes
+## Email Themes
 
 - 🔔 **Reminders** - Purple gradient theme
 - 🌤️ **Weather Updates** - Cyan/Blue theme
 - 🚨 **Temperature Alerts** - Red/Orange theme
 - 📧 **Generic Notifications** - Green theme
 
-## 🏗️ Tech Stack
+## Tech Stack
 
 **Backend:**
 - Spring Boot 4.0.3
