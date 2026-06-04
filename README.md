@@ -34,7 +34,7 @@ A full-stack AI weather bot featuring intelligent weather monitoring, automated 
 - Vite 5.4.21
 - Dark theme CSS
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Java 17+
