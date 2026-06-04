@@ -221,10 +221,3 @@ WeatherBot/
 
 MIT License - Feel free to use and modify!
 
-## 👨‍💻 Author
-
-Developed with ❤️ by Krrish Garg
-
----
-
-Made with ☕ and 🤖
